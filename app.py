@@ -11,11 +11,32 @@ from data import (
 )
 from engine import run_simulation
 
-st.set_page_config(page_title="Middle Power Matrix", page_icon="🌐", layout="wide")
+st.set_page_config(
+    page_title="Middle Power Matrix",
+    page_icon="🌐",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 st.markdown(
-    "<style>#MainMenu {visibility: hidden;} header {visibility: hidden;} .stAppDeployButton {display: none;}</style>",
+    """
+    <style>
+        #MainMenu {visibility: hidden;}
+        .stAppDeployButton {display: none;}
+        [data-testid="stExpandSidebarButton"],
+        [data-testid="collapsedControl"] {
+            visibility: visible !important;
+            opacity: 1 !important;
+            display: block !important;
+            color: #000000 !important;
+            background-color: #f0f2f6 !important;
+            border-radius: 6px;
+        }
+    </style>
+    """,
     unsafe_allow_html=True
 )
+
 
 # --- INITIALISATION DE L'ÉTAT DE SESSION ---
 if "custom_active" not in st.session_state:
